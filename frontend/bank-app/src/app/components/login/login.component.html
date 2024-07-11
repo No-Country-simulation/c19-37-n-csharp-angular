@@ -1,1 +1,21 @@
-<p>login works!</p>
+<form class="form" [formGroup]="form" (submit)="sendForm()">
+  <fieldset>
+    <legend>Iniciar Sesion</legend>
+    <!-- <h2>{{form.value | json}}</h2> -->
+    <label>
+      Correo:
+    </label>
+    <input type="email" name="email" formControlName="email" >
+    <span *ngIf="email?.errors?.['required'] && email?.touched" class="invalid">Correo es obligatorio</span>
+    <label>
+      Contraseña:
+    </label>
+    <input type="password" name="password" formControlName="password">
+    <span *ngIf="password?.errors?.['required'] && password?.touched" class="invalid">Contraseña es obligatorio</span>
+
+    <span class="create-account">¿No tiene una cuenta? <a href="#">Cree una</a>.</span>
+
+    <button type="submit">Iniciar Sesion</button>
+
+  </fieldset>
+</form>
