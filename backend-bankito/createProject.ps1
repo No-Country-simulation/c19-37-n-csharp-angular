@@ -188,60 +188,59 @@ using Microsoft.AspNetCore.Mvc;
 using $projectName.DTOs;
 using $projectName.Services;
 
-namespace $projectName.Controllers
+namespace $projectName.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class ${entityName}Controller : ControllerBase
 {
-    [ApiController]
-    [Route(\"api/[controller]\")]
-    public class ${entityName}Controller : ControllerBase
+    private readonly I${entityName}Service _${($entityName.ToLower())}Service;
+
+    public ${entityName}Controller(I${entityName}Service $($entityName.ToLower())Service)
     {
-        private readonly I${entityName}Service _${($entityName.ToLower())}Service;
+        _${($entityName.ToLower())}Service = $($entityName.ToLower())Service;
+    }
 
-        public ${entityName}Controller(I${entityName}Service $($entityName.ToLower())Service)
-        {
-            _${($entityName.ToLower())}Service = $($entityName.ToLower())Service;
-        }
+    [HttpGet]
+    public ActionResult<IEnumerable<${entityName}Dto>> GetAll()
+    {
+        return Ok(_${($entityName.ToLower())}Service.GetAll());
+    }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<${entityName}Dto>> GetAll()
+    [HttpGet("{id}")]
+    public ActionResult<${entityName}Dto> GetById(int id)
+    {
+        var $($entityName.ToLower()) = _${($entityName.ToLower())}Service.GetById(id);
+        if ($($entityName.ToLower()) == null)
         {
-            return Ok(_${($entityName.ToLower())}Service.GetAll());
+            return NotFound();
         }
+        return Ok($($entityName.ToLower()));
+    }
 
-        [HttpGet(\"{id}\")]
-        public ActionResult<${entityName}Dto> GetById(int id)
-        {
-            var ${($entityName.ToLower())} = _${($entityName.ToLower())}Service.GetById(id);
-            if (${($entityName.ToLower())} == null)
-            {
-                return NotFound();
-            }
-            return Ok(${($entityName.ToLower())});
-        }
+    [HttpPost]
+    public ActionResult Add(${entityName}Dto $($entityName.ToLower())Dto)
+    {
+        _${($entityName.ToLower())}Service.Add($($entityName.ToLower())Dto);
+        return CreatedAtAction(nameof(GetById), new { id = $($entityName.ToLower())Dto.Id }, $($entityName.ToLower())Dto);
+    }
 
-        [HttpPost]
-        public ActionResult Add(${entityName}Dto $($entityName.ToLower())Dto)
+    [HttpPut("{id}")]
+    public ActionResult Update(int id, ${entityName}Dto $($entityName.ToLower())Dto)
+    {
+        if (id != $($entityName.ToLower())Dto.Id)
         {
-            _${($entityName.ToLower())}Service.Add($($entityName.ToLower())Dto);
-            return CreatedAtAction(nameof(GetById), new { id = $($entityName.ToLower())Dto.Id }, $($entityName.ToLower())Dto);
+            return BadRequest();
         }
+        _${($entityName.ToLower())}Service.Update($($entityName.ToLower())Dto);
+        return NoContent();
+    }
 
-        [HttpPut(\"{id}\")]
-        public ActionResult Update(int id, ${entityName}Dto $($entityName.ToLower())Dto)
-        {
-            if (id != $($entityName.ToLower())Dto.Id)
-            {
-                return BadRequest();
-            }
-            _${($entityName.ToLower())}Service.Update($($entityName.ToLower())Dto);
-            return NoContent();
-        }
-
-        [HttpDelete(\"{id}\")]
-        public ActionResult Delete(int id)
-        {
-            _${($entityName.ToLower())}Service.Delete(id);
-            return NoContent();
-        }
+    [HttpDelete("{id}")]
+    public ActionResult Delete(int id)
+    {
+        _${($entityName.ToLower())}Service.Delete(id);
+        return NoContent();
     }
 }
 "@
