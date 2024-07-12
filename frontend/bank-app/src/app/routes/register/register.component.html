@@ -1,0 +1,87 @@
+<div class="container register-container">
+  <section class="register-form-container">
+    <figure>
+      <img src="assets/img/bank-icon.png" alt="bank-icon" />
+    </figure>
+    <form
+      (submit)="onSubmit()"
+      action=""
+      class="register-form"
+      [formGroup]="registerForm"
+    >
+      <h2>Register</h2>
+      <div class="register-container-input">
+        <input
+          class="register-input"
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Name"
+          formControlName="name"
+        />
+        @if(getErrors("name")) {
+        <span>{{ getErrors("name") }}</span>
+        }
+      </div>
+      <div class="register-container-input">
+        <input
+          class="register-input"
+          type="text"
+          name="lastname"
+          id="lastname"
+          placeholder="Lastname"
+          formControlName="lastname"
+        />
+        @if(getErrors("lastname")) {
+        <span>{{ getErrors("lastname") }}</span>
+        }
+      </div>
+      <div class="register-container-input">
+        <input
+          class="register-input"
+          type="text"
+          name="dni"
+          id="dni"
+          placeholder="Dni"
+          formControlName="dni"
+        />
+        @if(getErrors("dni")) {
+        <span>{{ getErrors("dni") }}</span>
+        }
+      </div>
+      <div class="register-container-input">
+        <input
+          class="register-input"
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Email"
+          formControlName="email"
+        />
+        @if(getErrors("email")) {
+        <span>{{ getErrors("email") }}</span>
+        }
+      </div>
+      <div class="register-container-input">
+        <input
+          class="register-input"
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          autocomplete="off"
+          formControlName="password"
+        />
+        @if(getErrors("password")) {
+        <span>{{ getErrors("password") }}</span>
+        }
+      </div>
+      <span class="register-summit-login"
+        >Already have an account? <strong>Login</strong></span
+      >
+      <button class="register-btn" [disabled]="registerForm.invalid">
+        Register
+      </button>
+    </form>
+  </section>
+</div>
