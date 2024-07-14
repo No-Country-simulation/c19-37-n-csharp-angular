@@ -1,19 +1,16 @@
 <form class="form" [formGroup]="form" (submit)="sendForm()">
+  <figure>
+    <img src="../../../assets/img/logo.svg" alt="Logo">
+  </figure>
   <fieldset>
-    <legend>Iniciar Sesion</legend>
-    <!-- <h2>{{form.value | json}}</h2> -->
-    <label>
-      Correo:
-    </label>
-    <input type="email" name="email" formControlName="email" >
+    <h2>Iniciar Sesion</h2>
+    <input type="email" name="email" formControlName="email" placeholder="DNI o Correo">
     <span *ngIf="email?.errors?.['required'] && email?.touched" class="invalid">Correo es obligatorio</span>
-    <label>
-      Contraseña:
-    </label>
-    <input type="password" name="password" formControlName="password">
-    <span *ngIf="password?.errors?.['required'] && password?.touched" class="invalid">Contraseña es obligatorio</span>
 
-    <span class="create-account">¿No tiene una cuenta? <a href="#">Cree una</a>.</span>
+    <input type="password" name="password" formControlName="password" placeholder="Contraseña">
+    <span *ngIf="password?.errors?.['required'] && password?.touched" class="invalid">Contraseña es obligatoria</span>
+
+    <span class="create-account">¿No tiene una cuenta? <a href="#">Cree una.</a></span>
 
     <button type="submit">Iniciar Sesion</button>
 
