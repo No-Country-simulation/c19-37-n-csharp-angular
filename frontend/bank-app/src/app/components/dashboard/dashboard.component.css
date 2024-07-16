@@ -1,0 +1,101 @@
+/* Contenedor principal */
+.container {
+  background-color: black;
+  max-width: 100%;
+  min-height: 100vh;
+  padding: 0.5rem;
+
+  display: flex;
+  flex-flow: column nowrap;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.container * {
+  color: #fff;
+  font-family: Lato, "Times New Roman", Times, serif;
+}
+
+
+
+
+/* titulo */
+.title {
+  text-align: center;
+  padding: 2rem;
+}
+
+.user-panel {
+  max-width: 460px;
+  min-width: 400px;
+  width: 40%;
+}
+
+.user-panel .balance {
+  width: 90%;
+  height: 25vh;
+  padding: 1rem;
+  margin: 0 auto;
+  border-radius: 1rem;
+  background-image: url("../../../assets/img/balance.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.btns-panel a {
+  text-decoration: none;
+}
+
+.btns-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 90%;
+  margin: 1rem auto 0;
+}
+
+.btns-panel button {
+  padding: 1rem;
+  border: 1px solid #00b553;
+  border-radius: 2rem;
+  width: 45%;
+  background-color: #00b553;
+  color: #fff;
+}
+
+.btn-pay {
+  display: block;
+  width: 90%;
+  padding: 1rem;
+  margin: 4rem auto 0;
+  border: 1px solid #00b553;
+  border-radius: 2rem;
+  background-color: #00b553;
+}
+
+.btns-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 40%;
+  margin: 10vh auto;
+}
+
+.btns-footer button {
+  background-color: #000;
+  border: none;
+}
+
+/* All los botones */
+* [type="button"] {
+  cursor: pointer;
+}
+
+/* Hover para algunos botones */
+.btns-panel button:hover,
+.btn-pay:hover {
+  border: 1px solid #00b553;
+  background-color: black;
+}
